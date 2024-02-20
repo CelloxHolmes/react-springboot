@@ -1,23 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './FooterComponent.css'; // Import the CSS file
 
 class FooterComponent extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-                 
-        }
-    }
-
     render() {
         return (
-            <div>
-                <footer className = "footer">
-                    <span className="text-muted">React & Springboot Demo</span>
-                </footer>
-            </div>
-        )
+            <footer className="footer">
+                <span className="text-muted">React & Springboot Demo</span>
+            </footer>
+        );
     }
 }
 
-export default FooterComponent
+export default FooterComponent;

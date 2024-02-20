@@ -4,6 +4,7 @@ import { authenticate, authFailure, authSuccess } from '../redux/authActions';
 import './loginpage.css';
 import {userLogin} from '../api/authenticationService';
 import {Alert,Spinner} from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 const LoginPage=({loading,error,...props})=>{
 
@@ -58,6 +59,14 @@ const LoginPage=({loading,error,...props})=>{
 
         
     }
+
+    const history = useHistory(); // Correctly getting the history object here
+
+    const handleCreateAccount = () => {
+        // Use the history object obtained from useHistory
+        history.push('/register');
+    };
+
 
     const handleChange = (e) => {
         e.persist();
@@ -115,48 +124,40 @@ const LoginPage=({loading,error,...props})=>{
                                         <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                                      </div>
                                 </div>
-                                
 
-                                <div className="form-group m-0">
-                                    <button type="submit" className="btn btn-primary">
+
+                                <div className="form-group m-0 d-flex justify-content-between align-items-center">
+                                    <button type="submit" className="btn btn-primary mr-2">
                                         Login
                                         {loading && (
-                                            <Spinner
-                                            as="span"
-                                            animation="border"
-                                            size="sm"
-                                            role="status"
-                                            aria-hidden="true"
-                                          />
+                                            <Spinner as="span" animation="border" size="sm" role="status"
+                                                     aria-hidden="true"/>
                                         )}
-                                        {/* <ClipLoader
-                                        //css={override}
-                                        size={20}
-                                        color={"#123abc"}
-                                        loading={loading}
-                                        /> */}
+                                    </button>
+                                    <button type="button" className="btn btn-success ml-2"
+                                            onClick={handleCreateAccount}>
+                                        Create New Account
                                     </button>
                                 </div>
                             </form>
-                            { error &&
-                            <Alert style={{marginTop:'20px'}} variant="danger">
+                            {error &&
+                                <Alert style={{marginTop: '20px'}} variant="danger">
                                     {error}
                                 </Alert>
 
                             }
-                            
-        
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+        </section>
         </div>
     )
 
 
-    
 }
 
 const mapStateToProps=({auth})=>{

@@ -1,0 +1,11 @@
+/* FooterComponent.css */
+.footer {
+    width: 100%;
+    background-color: #f5f5f5; /* Light grey background, adjust as needed */
+    color: #6c757d; /* Muted text color, adjust as needed */
+    text-align: center;
+    padding: 10px 0; /* Add some padding */
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
